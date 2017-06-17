@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  match: one
+  player: one
+  team: one
+  position: MyString
+  is_caption: false
+  is_keeper: false
+
+two:
+  match: two
+  player: two
+  team: two
+  position: MyString
+  is_caption: false
+  is_keeper: false
