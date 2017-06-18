@@ -1,4 +1,4 @@
 class Contract < ApplicationRecord
-  belongs_to :team
-  belongs_to :player
+ # has_many :teams
+ # has_many :players
 end

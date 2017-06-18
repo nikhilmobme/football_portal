@@ -1,0 +1,26 @@
+<div class="container-main">
+<h1 class="team-name"><%=@team.name%></h1>
+<h3>Current team members</h3>
+ <%@contract=Contract.select(:player_id).where(:team_id=>@team.id)%>
+  <% @contract.each do |contract|%>
+
+ <%@player1=Player.find(contract.player_id)%>
+
+<h4> <%=@player1.name%></h4>
+ <%end%>
+<h3>Choose players</h3>
+<%= form_tag( { :action => 'add_players' } ) do %>
+
+<input type="hidden" name="team_id" value=<%=@team.id%> id=<%=@team_id%>/>
+<% @player.each do |player| %>
+<div class="">
+<input type="checkbox" class="r1" name="player_id[]" value=<%=player.id%> id=<%=player.id%>/> <%=player.name%>
+</div>
+<%end%>
+
+ <%= submit_tag 'Add' %>
+
+<%end%>
+
+
+</div>

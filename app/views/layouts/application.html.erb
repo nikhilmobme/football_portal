@@ -1,14 +1,125 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>FootballPortal</title>
-    <%= csrf_meta_tags %>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Register players</title>
+     <%= stylesheet_link_tag   'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' %>
+     <%=stylesheet_link_tag 'AdminLTEcss' %>
+    <%=stylesheet_link_tag 'skinblue' %>
+    <%=stylesheet_link_tag 'site' %>
+    <style>
+        .example-modal .modal {
+            position: relative;
+            top: auto;
+            bottom: auto;
+            right: auto;
+            left: auto;
+            display: block;
+            z-index: 1;
+        }
+        .example-modal .modal {
+            background: transparent !important;
+        }
+    </style>
+</head>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+    <header class="main-header">
+        <link rel="stylesheet" href="css/site.css">
+        <!-- Logo -->
+        <a class="logo">
+            <span class="logo-mini"></span>
+            <span class="logo-lg"><b>7's Match</b></span>
+        </a>
 
-  <body>
-    <%= yield %>
-  </body>
+        <!-- Header Navbar -->
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+            <!-- Navbar Right Menu -->
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown messages-menu">
+                        <ul class="dropdown-menu">
+                            <!--<li class="header">You have 4 messages</li>-->
+                            <li>
+
+                            </li>
+                            <!--<li class="footer"><a href="#">See All Messages</a></li>-->
+                        </ul>
+                    </li><!-- /.messages-menu -->
+                    <!-- User Account Menu -->
+                    <li class="dropdown user user-menu">
+                        <!-- Menu Toggle Button -->
+                        
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                            <span class="hidden-xs">Admin</span>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li class="user-header"></li>
+
+                            
+                            <li class="user-footer">
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <aside class="main-sidebar">
+
+    
+        <section class="sidebar">
+
+
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>Admin</p>
+                
+                </div>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="header">MENU</li>
+
+                 <li> <%=link_to "Add Players",new_player_path%></li>
+                 <li> <%=link_to "Add Teams ",new_team_path%></li>
+                 <li> <%=link_to "Teams",teams_path%></li>
+                  <li> <%=link_to "Schdule Match",new_match_path%></li>
+                  <li> <%=link_to "Schduled Matchs",schduled_matchs_path%></li>
+                <li> <%=link_to "LineUp",view_lineup_path%></li>
+
+
+            </ul>
+        </section>
+        
+        
+    </aside>
+    </div>
+    <div class="container-main">
+     <div class="container">
+    
+          <% flash.each do |a,b| %>
+            <%if a=="success"%>
+              <div class ="alert alert-default"><%= b%></div>
+            <%else%>
+              <div class ="alert alert-danger"><%= b%></div>
+            <%end%>
+          <%end%>
+        
+      </div>
+     </div>
+    <%=yield%> 
+
+    </body>
 </html>

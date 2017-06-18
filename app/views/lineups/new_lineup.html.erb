@@ -1,0 +1,65 @@
+
+<div class="container-main">
+<div class="col-sm-12">
+<h1>Line up..</h1>
+</div>
+   <% teams=Hash.new%>
+
+ 	<%teams={@team1.id=>@team1.name,@team2.id=>@team2.name}%>
+
+
+<% teams.each do |id, team|%>
+
+  <div class="col-sm-12 ">
+		<section>
+		 <div class="row tableview">
+            <div class="col-xs-12">
+              <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title"><%=team%></h3>
+                 
+                </div><!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+                  <table class="table">
+                    <tr>
+                    <th class="players-td">Jersy No</th>
+                      <th class="players-td">Player</th>
+					  <th class="players-td">IsCaptian</th>
+				    <th class="players-td">IsGoalKeaper</th>
+				    <th class="players-td">Position</th>
+					 </tr>
+
+					 <%@contract=Contract.select(:player_id).where(:team_id=>id)%>
+					 <% @contract.each do|contract| %>
+
+					 <%@player=Player.find(contract.player_id)%>
+					<tr>
+					<td class="text-center"><%=@player.id%></td> 
+                      <td class="text-center"><%=@player.name%></td>                     
+  					  <td class="text-center"><input type="radio" name="IsCaptian" Id="Caption"></td>
+  					  <td class="text-center"><input type="radio" name="IsGoalKeaper" Id="IsGoalKeaper"></td>
+  					  <td class="text-center">
+  					  	<div class="form-group">
+              <select name="Position">
+                 <option id=<%=@player.id%> value="Forward">---select--- </option>
+                  <option id=<%=@player.id%> value="Forward">Forward </option>
+                  <option id=<%=@player.id%> value="Backward">Backward </option>
+              </select>
+            </div>  
+
+  					  </td>
+                    </tr>
+                    <%end%>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+		</section>
+
+      </div>
+<%end%>
+
+<button class="button">Save</button>
+
+</div>

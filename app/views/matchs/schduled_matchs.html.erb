@@ -1,0 +1,17 @@
+<div class="container-main">
+<%@match.each do |match|%>
+
+
+<%@team1=Team.find(match.team1_id)%>
+<%@team2=Team.find(match.team2_id)%>
+<div class="match-box">
+   <h2><%=@team1.name%></h2>
+   <h4> v/s </h4>
+   <h2><%=@team2.name%></h2>
+   <h4>Venue:<%=match.venue%></h4>
+   <%=link_to "View Lineup",view_lineup_path%>
+
+</div>
+<%end%>
+  
+</div>

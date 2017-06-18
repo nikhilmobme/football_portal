@@ -1,0 +1,12 @@
+<div class="container-main">
+  <%@team.each do |team|%>
+    <div class="container">
+      <div class="row col-sm-6 team">
+        <div class="col-sm-12 team-title">
+          <h3><%=team.name%></h3>
+          <%=link_to "Add players", new_contracts_path(team), :class =>'btn btn-default'%>
+       </div>
+      </div>
+     </div>
+  <%end%>
+</div>

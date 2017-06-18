@@ -1,0 +1,68 @@
+.players-td {
+    text-align:center;
+    width:110px;
+}
+
+
+.text-center{
+	text-align:center;
+}
+
+.playerContainer{
+
+	margin-left: 200px;
+	margin-right: 200px;
+}
+
+
+.submit-form{
+}
+
+.container-main{
+	margin-left:250px;
+}
+.team, .team-title, .team-members
+{
+	display: block;
+	float: left;
+}
+
+.team{
+	min-height: 100px;
+}
+
+.team-title{
+    background-color: #eee;
+}
+
+.team-members{
+	border: 1px solid #000;
+	min-height: 100px;
+}
+
+.addplayer{
+	border: 1px solid #000;
+	min-height: 100px;
+}
+
+
+
+
+.text-center{
+	text-align: center;
+}
+
+
+.match-box{
+	text-align: center;
+	border:solid 2px black;
+	background-color: #eee;
+	width:300px;
+	height: 200px;
+	margin: 30px;
+	display:inline-block;
+}
+
+.team-name{
+	font-family:cursive;
+}
