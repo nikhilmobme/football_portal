@@ -9,8 +9,13 @@
    <h4> v/s </h4>
    <h2><%=@team2.name%></h2>
    <h4>Venue:<%=match.venue%></h4>
-   <%=link_to "View Lineup",view_lineup_path%>
-
+   <%=link_to "View Lineup",view_lineup_path(match)%>
+   <%=link_to "Edit",edit_schdule_path(match), :class =>'float-left' %>
+   <%=link_to "Delete", delete_schdule_path(match), 
+                        method: :delete,
+                        data: {confirm: 'are you sure?'},
+                         :class =>'float_right_match'%>
+                         
 </div>
 <%end%>
   

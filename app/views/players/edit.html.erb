@@ -1,0 +1,31 @@
+<div class="container-main">
+<h2>Edit Player</h2>
+<%=form_for :player, url: player_path(@player), method: :patch do |f| %>
+  <% if @player.errors.any? %>
+    <ul>
+      <div class="alert alert-danger">
+        <% @player.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </div>
+    </ul>
+  <% end %>
+  <div class="playerContainer">
+            <div class="form-group">
+              <%= f.label :name %><br>
+              <%=f.text_field(:name, {:class=>'form-control'}) %>
+            </div>
+            <div class="form-group">
+              <%= f.label :Age %><br>
+              <%=f.text_field(:age, {:class=>'form-control'}) %>
+            </div>
+            <div class="submit-form">
+              <%=f.submit({:class=>"btn btn-success"})%>
+            </div>
+    
+
+          </div>
+        </div>  
+<%end%>
+
+

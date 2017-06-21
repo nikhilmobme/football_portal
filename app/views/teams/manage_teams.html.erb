@@ -1,0 +1,23 @@
+<div class="container-main">
+<h2><%=@team.name%></h2>
+ <%=link_to "Edit", edit_team_path(@team), :class =>'btn btn-default'%>
+ <%=link_to "Delete", team_path(@team), 
+                        method: :delete,
+                        data: {confirm: 'are you sure?'},
+                         :class =>'btn btn-default'%>
+ <h2>manage team meambers</h2>
+<%= form_tag( { :action => 'remove_players', :controller=>'contracts' } ) do %>
+
+<input type="hidden" name="team_id" value=<%=@team.id%> id=<%=@team_id%>/>
+<% @player_array.each do |id , name| %>
+<div class="">
+<input type="checkbox" class="r1" name="player_id[]" value=<%=id%> id=<%=id%>/> <%=name%>
+</div>
+<%end%>
+
+ <%= submit_tag 'Remove' %>
+
+<%end%>
+ </div>
+
+

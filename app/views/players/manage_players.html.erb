@@ -1,0 +1,36 @@
+<div class="container-main">
+<h2>Player List</h2>
+<% @player.each do|player|%>
+
+
+  <div class="col-sm-4 well">
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <td><%=player.name%></td>
+      </tr>
+      <tr>
+        <th>Age</th>
+        <td><%=player.age%></td>
+      </tr>
+    </table>
+    <%=link_to "edit", edit_player_path(player), :class =>'btn btn-default'%>
+    <%=link_to "Delete",player_path(player), 
+                      method: :delete,
+                      data: {confirm: 'are you sure?'},
+                      :class =>'btn btn-default'%>
+
+   </div>
+   
+
+<%end%>
+
+     </div>
+
+
+
+
+
+
+
+

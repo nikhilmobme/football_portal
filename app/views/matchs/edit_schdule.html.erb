@@ -3,12 +3,13 @@
     <div class="row tableview">
       <div class="box box-primary" >
         <div class="box-header with-border">
-          <h3 class="text-center">Fix New Match</h3>
+          <h3 class="text-center">Edit Schdule......</h3>
         </div>
-        <%=form_for @match, url: fix_match_path,method: :post do |f| %>
+        <%=form_for @match, url: update_match_path,method: :patch do |f| %>
           <div class="playerContainer">
             <div class="form-group">
-              <%= f.label :venue %><br>
+                <%= f.hidden_field :match_id, :value => @match.id %>
+                <%= f.label :venue %><br>
               <%= f.select :venue, ['Bangalore', 'Cochin','Chennai','Mumbai'] ,{}, {:class =>'form-control'} %>
             </div>
             <div class="form-group">

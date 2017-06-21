@@ -1,4 +1,52 @@
 <div class="container-main">
-<h2>Team</h2>
-<h3>team line-up will display here</h3>
+  <div class="col-sm-5 lineup-viewer">
+    <h1><%=@team1.name%></h1>
+    <table class="table">
+	  <tr>
+	    <th>Jersy No.</th>
+	    <th>Name</th>
+	    <th>Position</th>
+	  </tr>
+	  <% @lineup1.each do |lineup1|%>
+        <%@player1=Player.find(lineup1.player_id) %>
+	    <tr>
+	      <td><%=lineup1.player_id%></td>
+	      <td>
+		    <%if lineup1.is_caption %>
+    	      <%=@player1.name%><span class="cap_me">C</span>
+    	    <%else%>
+    	      <%=@player1.name%>
+    	    <%end%>
+	      </td>
+	      <td><%=lineup1.position%></td>
+	    </tr>
+	  <%end%>
+    </table>
+  </div>
+  <div class="col-sm-2 lineup-viewer"></div>
+  <div class="col-sm-5 lineup-viewer">
+  <h1><%=@team2.name%></h1>
+  <table class="table">
+	<tr>
+	  <th>Jersy No.</th>
+	  <th>Name</th>
+	  <th>Position</th>
+	</tr>
+	<% @lineup2.each do |lineup2|%>
+      <%@player2=Player.find(lineup2.player_id) %>
+	  <tr>
+	  <td><%=lineup2.player_id%></td>
+	  <td>
+		<%if lineup2.is_caption %>
+    	  <%=@player2.name%><span class="cap_me">C</span>
+    	<%else%>
+    	  <%=@player2.name%>
+    	<%end%>
+	   </td>
+	   <td><%=lineup2.position%></td>
+	   </tr>
+	<%end%>
+  </table>
+  </div>
+  <%=link_to "Back", schduled_matchs_path, :class =>'btn btn-success'%>
 </div>

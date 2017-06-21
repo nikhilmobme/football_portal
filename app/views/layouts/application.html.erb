@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Register players</title>
+        <%= javascript_include_tag :defaults %> 
+        <%= javascript_include_tag :application %>
+        <%= csrf_meta_tags %>
      <%= stylesheet_link_tag   'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' %>
      <%=stylesheet_link_tag 'AdminLTEcss' %>
     <%=stylesheet_link_tag 'skinblue' %>
@@ -57,7 +60,9 @@
                         <!-- Menu Toggle Button -->
                         
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+
+                         <%= image_tag("admin.png", :alt => "UserImage", :class =>"user-image" ) %>
+                     
                             <span class="hidden-xs">Admin</span>
                         </a>
 
@@ -80,15 +85,15 @@
         <section class="sidebar">
 
 
-            <div class="user-panel">
+            <!--div class="user-panel">
                 <div class="pull-left image">
-                    <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                  
                 </div>
                 <div class="pull-left info">
                     <p>Admin</p>
                 
                 </div>
-            </div>
+            </div-->
             <ul class="sidebar-menu">
                 <li class="header">MENU</li>
 
@@ -97,9 +102,6 @@
                  <li> <%=link_to "Teams",teams_path%></li>
                   <li> <%=link_to "Schdule Match",new_match_path%></li>
                   <li> <%=link_to "Schduled Matchs",schduled_matchs_path%></li>
-                <li> <%=link_to "LineUp",view_lineup_path%></li>
-
-
             </ul>
         </section>
         
@@ -107,7 +109,7 @@
     </aside>
     </div>
     <div class="container-main">
-     <div class="container">
+     
     
           <% flash.each do |a,b| %>
             <%if a=="success"%>
@@ -117,7 +119,7 @@
             <%end%>
           <%end%>
         
-      </div>
+      
      </div>
     <%=yield%> 
 

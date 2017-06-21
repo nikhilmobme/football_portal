@@ -16,10 +16,12 @@
 
 
 .submit-form{
+
 }
 
-.container-main{
-	margin-left:250px;
+.container-main{	
+    margin-left: 250px;
+    max-height: 600px;
 }
 .team, .team-title, .team-members
 {
@@ -51,6 +53,11 @@
 .text-center{
 	text-align: center;
 }
+.container-main-overflow{	
+    margin-left: 250px;
+    max-height: 600px;
+    overflow-x: auto;
+}
 
 
 .match-box{
@@ -66,3 +73,58 @@
 .team-name{
 	font-family:cursive;
 }
+.manage{
+	border-radius: 2 px;
+	text-align:center;
+
+	background-color: #00a65a;
+
+	border:1px ;
+}
+
+
+.float-right{
+	float:right;
+	padding-right:10px;
+}
+.float-left{
+	float: left;
+	padding-left: 10px
+}
+
+.padding10-right{
+	float:right;
+	padding-right:10px;
+}
+.listpadding
+{
+	padding-right: 10px
+}
+.border
+{
+	padding: 10px;
+	border: 1px;
+	height: 20px;
+	background-color:#f5f5f5; 
+}
+
+.float_right_match{
+	float:right;
+	padding-right: 2px;
+}
+
+.lineup-viewer{
+	display: inline-block;
+}
+
+.cap_me{
+	border: none 2px #fff;
+    width: 6px;
+    height: 6px;
+    border-radius: 85px;
+    background-color: #97e6de;
+    text-align: center;
+    padding-left: 5px;
+
+}
+

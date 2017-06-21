@@ -4,7 +4,8 @@
       <div class="row col-sm-6 team">
         <div class="col-sm-12 team-title">
           <h3><%=team.name%></h3>
-          <%=link_to "Add players", new_contracts_path(team), :class =>'btn btn-default'%>
+          <%=link_to "Add players", new_contracts_path(team), :class =>'padding10-right'%>
+          <%=link_to "Manage ",manage_teams_path(team), :class =>'float-right' %>
        </div>
       </div>
      </div>
