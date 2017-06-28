@@ -9,8 +9,16 @@
           <div class="playerContainer">
             <div class="form-group">
               <%= f.label :venue %><br>
-              <%= f.select :venue, ['Bangalore', 'Cochin','Chennai','Mumbai'] ,{}, {:class =>'form-control'} %>
-            </div>
+              <select name="venue" class="form-control">
+                <% @venue.each do|venue| %>
+                  <option id=<%=venue.city%> value=<%=venue.city%>> <%=venue.city%>
+                  </option>
+                <%end%>
+              </select>
+              <div class="float-right">
+              <%=link_to "add venue" ,new_venue_path %>
+              </div>
+             </div>
             <div class="form-group">
               <%= f.label :date %><br>
               <%= f.text_field :date, :value=>Date.today.strftime('%m-%d-%Y'), :class =>'form-control' %> 

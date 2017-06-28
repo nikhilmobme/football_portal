@@ -1,21 +1,24 @@
 class MatchsController < ApplicationController
 	def add_matchs
 		@match=Match.new
+    @venue=Venue.all
     @team=Team.all
 	end
   def edit_schdule
     @match=Match.find(params[:format])
     @team=Team.all
+    @venue=Venue.all
     #@team1=Team.find_by(:team_id=>@match.team1_id)
     #@team2=Team.find_by(:team_id=>@match.team2_id)
   end
   def update_match
+  
     @match=Match.find(params[:match][:match_id])
     if (@match.team1_id.to_s != params[:team1_id].to_s || @match.team2_id.to_s !=params[:team2_id].to_s)
       flash[:failure]="You Cant change the team here" 
       redirect_to edit_schdule_path(@match)
     else 
-      @match.venue= params[:match][:venue]
+      @match.venue= params[:venue]
       @match.date= params[:match][:date]
       if @match.save! 
         redirect_to schduled_matchs_path
@@ -47,8 +50,8 @@ class MatchsController < ApplicationController
         flash[:failure]="please check team balance"
         redirect_to new_match_path 
       else
-        @match.venue= params[:match][:venue]
-        @match.date= params[:match][:date]
+        @match.venue= params[:venue]
+        @match.date= params[:date]
         @match.team1_id=params[:team1_id]
         @match.team2_id=params[:team2_id]
         @match.save!

@@ -22,13 +22,14 @@ class ContractsController < ApplicationController
       flash[:success]="players removed from the  team"
     else
       redirect_to  manage_teams_path(@team_id)
-      flash[:success]="line up exists... can't remove"
+      flash[:failure]="line up exists... can't remove"
     end
   end
   def add_players
-    team_id=params["team_id"]
+    team_id=params[:team_id]
     bal_players=params[:bal_players]
  	  player_id = params[:player_id]
+    if player_id
     if bal_players.to_i<player_id.size.to_i
       flash[:failure]="player limits exists"
       redirect_to new_contracts_path(team_id)
@@ -40,7 +41,12 @@ class ContractsController < ApplicationController
    	    @contract.save!
       end
       redirect_to teams_path
-      flash[:success]="players succesfully addedd to teams"
+      flash[:success]="players succesfully added to teams"
     end
+  else
+     flash[:failure]="choose players to add"
+     redirect_to new_contracts_path(team_id)
+   end
+
   end
 end

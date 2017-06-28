@@ -7,11 +7,25 @@ class LineupsController < ApplicationController
     @contract1=Contract.select(:player_id).where(:team_id=>@team1.id)
     @contract2=Contract.select(:player_id).where(:team_id=>@team2.id)
   end
+  def edit_lineup
+    @match =Match.find(params[:format])
+    @team1=Team.find(@match.team1_id)
+    @team2=Team.find(@match.team2_id)
+    @lineup=Lineup.new
+    @contract1=Contract.select(:player_id).where(:team_id=>@team1.id)
+    @contract2=Contract.select(:player_id).where(:team_id=>@team2.id)
+  end
+
   def store_lineup
+   
   if !params[:iscaption] || !params[:isgoalkeeper] || !params[:iscaption2] || !params[:isgoalkeeper2]
     flash[:failure]="Please select all fields for both teams"
     redirect_to new_lineup_path(params[:lineup][:match_id])
 else
+  @lineup=Lineup.select(:id).where(:match_id=>params[:lineup][:match_id])
+  if !@lineup.blank?
+     @lineup.destroy_all
+   end
  	@contract =Contract.select(:player_id).where(:team_id=>params[:lineup][:team1_id])
  	@contract.each do |contract|
  	  p="#{contract.player_id}Position"
@@ -60,7 +74,7 @@ else
       end
       @lineup2.save
  	end  	
-    redirect_to schduled_matchs_path
+    redirect_to view_lineup_path(params[:lineup][:match_id])
   end
 end
   def view_lineup

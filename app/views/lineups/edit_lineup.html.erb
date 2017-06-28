@@ -1,0 +1,98 @@
+
+<div class="container-main">
+  <div class="col-sm-12">
+    <h1>Line up..</h1>
+  </div>
+  <div class="col-sm-12 ">
+    <section>
+     <div class="row tableview">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title"><%=@team1.name%></h3>
+            </div>
+            <div class="box-body table-responsive no-padding">
+              <table class="table">
+                <tr>
+                  <th class="players-td">Jersy No</th>
+                  <th class="players-td">Player</th>
+                  <th class="players-td">IsCaptian</th>
+                  <th class="players-td">IsGoalKeaper</th>
+                  <th class="players-td">Position</th>
+                </tr>
+                <%=form_for @lineup, url: store_lineup_path,method: :post do |f| %>
+                <%=f.hidden_field :team1_id, :value => @team1.id %>
+                <%=f.hidden_field :team2_id, :value => @team2.id %>
+                <%=f.hidden_field :match_id, :value => @match.id %>
+                  <% @contract1.each do|contract| %>
+                    <%@player=Player.find(contract.player_id)%>
+                    <tr>
+                      <td class="text-center"><%=@player.id%></td> 
+                      <td class="text-center"><%=@player.name%></td>                     
+                      <td class="text-center">
+                        <input name="iscaption" Id=<%=@player.id%> value=<%=@player.id%> type="radio"/>
+                        </label>
+                      </td>
+                      <td class="text-center"><input name="isgoalkeeper" onchange="myFunction( <%=@player.id%> )" Id=<%=@player.id%> value=<%=@player.id%> type="radio"/></td>
+                      <td class="text-center">
+                        <div class="form-group">
+                          <select name="<%=@player.id%>Position" id="<%=@player.id%>Position" >
+                            <option id=<%=@player.id%> name="" value="" >---select--- </option>
+                            <option id=<%=@player.id%> name="forward" value="Forward">Forward </option>
+                            <option id=<%=@player.id%> name="backward" value="Backward">Backward </option>
+                          </select>
+                        </div>  
+                      </td>
+                    </tr>
+                  <%end%>
+                </table>
+                 <div class="box-header">
+              <h3 class="box-title"><%=@team2.name%></h3>
+            </div>
+                <table class="table">
+                <tr>
+                  <th class="players-td">Jersy No</th>
+                  <th class="players-td">Player</th>
+                  <th class="players-td">IsCaptian</th>
+                  <th class="players-td">IsGoalKeaper</th>
+                  <th class="players-td">Position</th>
+                </tr>
+                <% @contract2.each do|contract| %>
+                    <%@player2=Player.find(contract.player_id)%>
+                    <tr>
+                      <td class="text-center"><%=@player2.id%></td> 
+                      <td class="text-center"><%=@player2.name%></td>                     
+                      <td class="text-center">
+                        <input name="iscaption2" Id=<%=@player2.id%> value=<%=@player2.id%> type="radio"/>
+                        </label>
+                      </td>
+                      <td class="text-center"><input name="isgoalkeeper2" onchange="myFunction( <%=@player2.id%> )" Id=<%=@player2.id%> value=<%=@player2.id%> type="radio"/></td>
+                      <td class="text-center">
+                        <div class="form-group">
+                          <select name="<%=@player2.id%>Position" id="<%=@player2.id%>Position" >
+                            <option id=<%=@player2.id%> name="" value="" >---select--- </option>
+                            <option id=<%=@player2.id%> name="forward2" value="Forward">Forward </option>
+                            <option id=<%=@player2.id%> name="backward2" value="Backward">Backward </option>
+                          </select>
+                        </div>  
+                      </td>
+                    </tr>
+                    <%end%>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <%=f.submit "Update Lineup",:class=>"btn btn-success"%>
+  <%end%>
+</div>
+
+           
+
+<script>
+function myFunction(data) {
+   document.getElementById(data+'Position').disabled=true;
+}
+</script>

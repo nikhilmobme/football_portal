@@ -1,0 +1,27 @@
+<div class="container-main">
+  <section class="content contentbackground">
+    <div class="row tableview">
+      <div class="box box-primary" >
+        <div class="box-header with-border">
+          <h3 class="text-center">Add Venue..</h3>
+        </div>
+        <%=form_for @venue, url: create_venue_path, method: :post do |f| %>
+          <div class="playerContainer">
+            <div class="form-group">
+              <%= f.label :stadium %><br>
+              <%=f.text_field(:stadium, {:class=>'form-control'}) %>
+            </div>
+            <div class="form-group">
+              <%= f.label :city %><br>
+              <%=f.text_field(:city, {:class=>'form-control'}) %>
+            </div>
+            <div class="submit-form">
+              <%=f.submit "add venue",:class=>"btn btn-success" %>
+            </div>
+          </div>
+        </div>
+        <%end%>
+      </div>
+    </div>
+  </section>
+</div>

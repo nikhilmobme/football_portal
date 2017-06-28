@@ -7,10 +7,19 @@
         </div>
         <%=form_for @match, url: update_match_path,method: :patch do |f| %>
           <div class="playerContainer">
+            <%= f.hidden_field :match_id, :value => @match.id %>
+
             <div class="form-group">
-                <%= f.hidden_field :match_id, :value => @match.id %>
-                <%= f.label :venue %><br>
-              <%= f.select :venue, ['Bangalore', 'Cochin','Chennai','Mumbai'] ,{}, {:class =>'form-control'} %>
+              <%= f.label :venue %><br>
+              <select name="venue" class="form-control">
+                <% @venue.each do|venue| %>
+                  <option id=<%=venue.city%> value=<%=venue.city%>> <%=venue.city%>
+                  </option>
+                <%end%>
+              </select>
+              <div class="float-right">
+              <%=link_to "add venue" ,new_venue_path %>
+              </div>
             </div>
             <div class="form-group">
               <%= f.label :date %><br>

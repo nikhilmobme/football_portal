@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
 	resources :players
 	resources :teams
+	get 'edit_lineup', to: 'lineups#edit_lineup'
 	patch 'update_match', to: 'matchs#update_match'
 	get 'manage_teams', to: 'teams#manage_teams'
 	post 'lineups/store_lineup'
@@ -22,5 +23,8 @@ Rails.application.routes.draw do
 	get  'view_lineup', to:'lineups#view_lineup'
 	root 'players#index'
 	get 'manage_players', to: 'players#manage_players'
+	get 'new_venue', to: 'venues#new_venue'
+    post 'create_venue', to: 'venues#create_venue'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
